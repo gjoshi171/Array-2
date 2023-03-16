@@ -1,0 +1,30 @@
+//time complexity: O(n)
+//space complexity: O(1)
+//successfully run on leetcode.
+
+class DisappearedNumber {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result= new ArrayList<>();
+
+        
+        //find index according to the first element and then mark element as negative at that particular index
+        for(int i=0;i<nums.length;i++){
+            int idx= Math.abs(nums[i])-1;
+            if(nums[idx]>0){
+                nums[idx]= nums[idx]*-1;
+
+            }
+        }
+        
+         for(int j=0;j<nums.length;j++){
+         if(nums[j]>0){
+            result.add(j+1);
+         }
+         else{
+             nums[j]= nums[j]*-1;
+         }
+         }
+        
+        return result;
+    }
+}
